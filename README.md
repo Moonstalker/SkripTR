@@ -1,5 +1,5 @@
 # MoonSk
-<br>Skript Addon
-<br>This is a Minecraft Plugin
+<br>Minecraft Skript Addon
 <br>Coded by Moonstalker (Minecraftplayerr)
-<br>This plugin is under development.
+<br>
+<br>This plugin is <font style=color:red>under development.</font>
