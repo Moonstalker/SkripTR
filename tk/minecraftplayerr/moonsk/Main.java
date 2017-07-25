@@ -14,8 +14,14 @@ public class Main extends JavaPlugin {
 		if (Bukkit.getPluginManager().getPlugin("Skript") != null) {
             Skript.registerAddon(this);
             Skript.registerExpression(oplist.class, String.class, ExpressionType.PROPERTY,
-            "oplist");
-            Skript.registerEffect(SunucuKapat.class, "sunucuyu kapat");
+            		"oplist");
+            Skript.registerEffect(SunucuKapat.class,
+            		"sunucuyu kapat");
+            Skript.registerEffect(Yasakla.class,
+            		"%string% -> ban [-> %-string%]",
+            		"ban -> %string% [-> %-string%]",
+            		"%string% -> banla [-> %-string%]",
+        			"%string% -> yasakla [-> %-string%]");
         }else{setEnabled(false);}
 	}
 
