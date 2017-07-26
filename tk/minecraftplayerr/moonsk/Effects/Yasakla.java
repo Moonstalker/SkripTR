@@ -66,16 +66,20 @@ public class Yasakla extends Effect {
 			String yyazı2=yazı2.getSingle(evt).toString();
 			yyazı2.toLowerCase().replaceAll(Pattern.quote("\""),"");
 			if(yyazı2.contains("gün")){yyazı2=yyazı2.replaceAll("gün","").replaceAll(" ","");
-				try{eklenecekgün=Integer.parseInt(yyazı2);sebepyazısı=1;}catch(NumberFormatException e){}
-			}
+				try{eklenecekgün=Integer.parseInt(yyazı2);
+					sebepyazısı=1;}catch(NumberFormatException e){}
+				}
 			if(yyazı2.contains("saat")){yyazı2=yyazı2.replaceAll("saat","").replaceAll(" ","");
-				try{ekleneceksaat=Integer.parseInt(yyazı2);sebepyazısı=1;}catch(NumberFormatException e){}
+				try{ekleneceksaat=Integer.parseInt(yyazı2);
+					sebepyazısı=1;}catch(NumberFormatException e){}
 			}
 			if(yyazı2.contains("dakika")){yyazı2=yyazı2.replaceAll("dakika","").replaceAll(" ","");
-				try{eklenecekdakika=Integer.parseInt(yyazı2);sebepyazısı=1;}catch(NumberFormatException e){}
+				try{eklenecekdakika=Integer.parseInt(yyazı2);
+					sebepyazısı=1;}catch(NumberFormatException e){}
 			}
 			if(yyazı2.contains("saniye")){yyazı2=yyazı2.replaceAll("saniye","").replaceAll(" ","");
-				try{ekleneceksaniye=Integer.parseInt(yyazı2);sebepyazısı=1;}catch(NumberFormatException e){}
+				try{ekleneceksaniye=Integer.parseInt(yyazı2);
+					sebepyazısı=1;}catch(NumberFormatException e){}
 			}
 		}
 		
@@ -91,7 +95,8 @@ public class Yasakla extends Effect {
 		
 		if(eklenecekgün>0){calendar.add(Calendar.DAY_OF_MONTH, eklenecekgün);}
 		if(ekleneceksaat>0){calendar.add(Calendar.HOUR, ekleneceksaat);}
-		if(ekleneceksaat>0){calendar.add(Calendar.HOUR, ekleneceksaat);}
+		if(eklenecekdakika>0){calendar.add(Calendar.MINUTE, ekleneceksaat);}
+		if(ekleneceksaniye>0){calendar.add(Calendar.SECOND, ekleneceksaniye);}
 		sdf.format(calendar.getTime());
 
         sonsüre=calendar.getTime();
