@@ -1,6 +1,0 @@
-name: MoonSk
-version: 1.0.0
-description: Skript addon
-main: tk.minecraftplayerr.moonsk.Main
-softdepend: [Skript]
-author: Minecraftplayerr
