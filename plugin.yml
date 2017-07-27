@@ -1,0 +1,6 @@
+name: MoonSk
+version: 1.0.0
+description: Skript addon
+main: kayıtişlemleri.Kayıt
+softdepend: [Skript]
+author: Minecraftplayerr
