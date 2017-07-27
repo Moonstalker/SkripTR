@@ -18,9 +18,7 @@ public class oplist extends SimpleExpression<String> {
     	
     	StringBuilder ops = new StringBuilder();
     	for(OfflinePlayer all : Bukkit.getOperators()){
-    		if(ops.length() > 0){
-    			ops.append(", ");
-    		}
+    		if(ops.length() > 0){ops.append(", ");}
     	ops.append(all.getName());
     	}
     	
