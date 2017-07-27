@@ -1,4 +1,4 @@
-package kayıtişlemleri;
+package kaydet;
 
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
