@@ -83,6 +83,9 @@ public class Yasakla extends Effect {
 			}
 		}
 		
+		if(sebepyazısı==0){
+			sebep=yazı1.getSingle(evt).toString();
+		}
 		if(sebepyazısı==1){
 			sebep=yazı1.getSingle(evt).toString();
 		}
