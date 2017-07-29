@@ -22,10 +22,10 @@ public class Yasakla extends Effect {
 	Expression<String> yazı2; 
 	
 	@SuppressWarnings("unchecked")
-	@Override public boolean init(Expression<?>[] exp, int arg1, Kleenean arg2, ParseResult arg3) {
-		oyuncu=(Expression<String>) exp[0];
-		yazı1=(Expression<String>) exp[1];
-		yazı2=(Expression<String>) exp[2];
+	@Override public boolean init(Expression<?>[] a, int arg1, Kleenean arg2, ParseResult arg3) {
+		oyuncu=(Expression<String>) a[0];
+		yazı1=(Expression<String>) a[1];
+		yazı2=(Expression<String>) a[2];
 		return true;
 	}
 	@Override public String toString(@Nullable Event evt, boolean arg1) {return null;}
@@ -105,9 +105,7 @@ public class Yasakla extends Effect {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		Calendar calendar = new GregorianCalendar();
 		
-		if(eklenecekyüzyıl>0){eklenecekyüzyıl=eklenecekyüzyıl*100;}
-		
-		if(eklenecekyüzyıl>0){calendar.add(Calendar.YEAR, eklenecekyüzyıl);}
+		if(eklenecekyüzyıl>0){eklenecekyüzyıl=eklenecekyüzyıl*100;calendar.add(Calendar.YEAR, eklenecekyüzyıl);}
 		if(eklenecekyıl>0){calendar.add(Calendar.YEAR, eklenecekyıl);}
 		if(eklenecekay>0){calendar.add(Calendar.MONTH, eklenecekay);}
 		if(eklenecekhafta>0){calendar.add(Calendar.WEEK_OF_MONTH, eklenecekhafta);}
