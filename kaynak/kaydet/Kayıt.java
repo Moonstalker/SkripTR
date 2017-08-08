@@ -27,6 +27,7 @@ import org.bukkit.event.block.BlockDamageEvent;
 import org.bukkit.event.block.BlockFromToEvent;
 import org.bukkit.event.block.BlockIgniteEvent;
 import org.bukkit.event.block.BlockPhysicsEvent;
+import org.bukkit.event.block.BlockPistonEvent;
 import org.bukkit.event.block.BlockPistonExtendEvent;
 import org.bukkit.event.block.BlockPistonRetractEvent;
 import org.bukkit.event.block.BlockRedstoneEvent;
@@ -102,6 +103,7 @@ import ch.njol.skript.events.util.PlayerChatEventHandler;
 import ch.njol.skript.lang.ExpressionType;
 import ch.njol.skript.lang.util.SimpleEvent;
 import ch.njol.util.coll.CollectionUtils;
+import etkiler.Değiştir;
 import etkiler.KonsolaMesajGönder;
 import etkiler.MesajYayınla;
 import etkiler.Olayİptal;
@@ -130,29 +132,39 @@ public class Kayıt extends JavaPlugin {
 			Skript.registerEffect(SunucuKapat.class, "sunucuyu kapat");
 			Skript.registerEffect(Yasakla.class,
 					"(ban|banla|yasakla) -> %string% [-> [(sebep|neden|süre|zaman):] %-string% [boyunca]] [-> [(sebep|neden|süre|zaman):] %-string% [boyunca]]",
-					"%string% -> (ban|banla|yasakla) [-> [(sebep|neden|süre|zaman):] %-string% [boyunca]] [-> [(sebep|neden|süre|zaman):] %-string% [boyunca]]",
-					"%string% [-> [(sebep|neden|süre|zaman):] %-string% [boyunca] [(banla|yasakla)]] [-> [(sebep|neden|süre|zaman):] %-string% [boyunca] [(banla|yasakla)]]");
+					"%string%[[y][i][u][ü][ı]] [->] (ban|banla|yasakla) [-> [(sebep|neden|süre|zaman):] %-string% [boyunca]] [-> [(sebep|neden|süre|zaman):] %-string% [boyunca]]",
+					"%string%[[y][i][u][ü][ı]] [[->] [(sebep|neden|süre|zaman):] %-string% [boyunca] [(banla|yasakla)]] [-> [(sebep|neden|süre|zaman):] %-string% [boyunca] [(banla|yasakla)]]");
 			Skript.registerEffect(OyuncuyaMesajGönder.class, "mesaj gönder -> %player% [->] %string%");
 			Skript.registerEffect(KonsolaMesajGönder.class, "konsola mesaj gönder [->] %string%");
 			Skript.registerEffect(Olayİptal.class, "[olayı] iptal et");
 			Skript.registerEffect(MesajYayınla.class, "[%worlds% dünyasındakilere] [mesaj] yayınla [->] %-strings%");
+			Skript.registerEffect(Değiştir.class,
+					"(artır|arttır|ekle) %~objects% -> %objects%",
+					"ayarla %~objects% -> %objects%",
+					"%~objects%'den tüm %objects%'leri sil",
+					//"(remove|subtract) %objects% from %~objects%",
+					"%~objects%[['](i|dan)] [->] %objects% [kadar] (sil|azalt|düşür)",
+					"%~objects% -> (sil|temizle)",
+					"%~objects% -> sıfırla"
+					);
 
 			
 			
 			// OLAYLAR\\
-			olayKaydet(BlockDamageEvent.class, "(blok hasar aldığında|blok kırılmaya başlandığında)");
+			olayKaydet(BlockDamageEvent.class, "(blo[c]k hasar aldığında|blo[c]k kırılmaya başlandığında)");
 			olayKaydet(PlayerMoveEvent.class, "herhangi bir yürümede");
 			olayKaydet(PlayerBucketEmptyEvent.class, "kova boşaltıldığında");
 			olayKaydet(PlayerBucketFillEvent.class, "kova doldurulduğunda");
 			Skript.registerEvent("", SimpleEvent.class, BlockFromToEvent.class, "(su|lav|lava) aktığında",
-					"(ejderha yumurtası|blok|block) hareket ettiğinde");
-			olayKaydet(BlockIgniteEvent.class, "(block|blok) yandığında");
+					"(ejderha yumurtası|blo[c]k) hareket ettiğinde");
+			olayKaydet(BlockIgniteEvent.class, "(blo[c]k) yandığında");
 			Skript.registerEvent("", SimpleEvent.class, BlockPhysicsEvent.class, "(kum|kırmızı kum|toprak|meşale) düştüğünde",
 					"toprak yeşerdiğinde");
-			olayKaydet(BlockPistonExtendEvent.class, "piston açılırken");
-			olayKaydet(BlockPistonRetractEvent.class, "piston kapanırken");
+			olayKaydet(BlockPistonExtendEvent.class, "piston açıl(ırken|dığında)");
+			olayKaydet(BlockPistonRetractEvent.class, "piston kapan(ırken|dığında)");
+			olayKaydet(BlockPistonEvent.class, "piston [(açıl(ırken|dığında) veya kapan(ırken|dığında)|hareket ettiğinde)]");
 			olayKaydet(BlockRedstoneEvent.class, "kızıltaş [değiştiğinde]");
-			olayKaydet(BlockSpreadEvent.class, "(mantar|su|lav|lava|blok|block) yayıldığında");
+			olayKaydet(BlockSpreadEvent.class, "(mantar|su|lav|lava|blo[c]k) yayıldığında");
 			olayKaydet(ChunkLoadEvent.class, "(arazi|chunk) yüklendiğinde");
 			olayKaydet(ChunkPopulateEvent.class, "(arazi|chunk) oluştuğunda");
 			olayKaydet(ChunkUnloadEvent.class, "(arazi|chunk) geriyüklendiğinde");
