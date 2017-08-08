@@ -32,11 +32,11 @@ import ch.njol.skript.lang.Trigger;
 
 public class ScriptYüklendiğinde extends SelfRegisteringSkriptEvent {
 
-	private boolean yükle;
+	private boolean y;
 
 	@Override
 	public boolean init(final Literal<?>[] args, final int matchedPattern, final ParseResult parser) {
-		yükle = matchedPattern == 0;
+		y = matchedPattern == 0;
 		return true;
 	}
 
@@ -45,21 +45,21 @@ public class ScriptYüklendiğinde extends SelfRegisteringSkriptEvent {
 	@Override
 	public void register(final Trigger t) {
 		this.t = t;
-		if (yükle)
+		if (y)
 			t.execute(new ScriptEvent());
 	}
 
 	@Override
 	public void unregister(final Trigger t) {
 		assert t == this.t;
-		if (!yükle)
+		if (!y)
 			t.execute(new ScriptEvent());
 		this.t = null;
 	}
 
 	@Override
 	public void unregisterAll() {
-		if (!yükle && t != null)
+		if (!y && t != null)
 			t.execute(new ScriptEvent());
 		t = null;
 	}
